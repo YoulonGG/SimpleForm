@@ -16,6 +16,7 @@ class SecondActivity : AppCompatActivity() {
         val txtUsername = findViewById<TextView>(R.id.txtUsername2)
         val txtAge = findViewById<TextView>(R.id.txtAge2)
         val txtJob = findViewById<TextView>(R.id.txtJob2)
+        val btnBack = findViewById<Button>(R.id.btnBack)
 
         //Get value from first Activity using key_word and getStringExtra function
         val getUsername = intent.getStringExtra("username_key")
@@ -27,10 +28,8 @@ class SecondActivity : AppCompatActivity() {
         val getJob = intent.getStringExtra("job_key")
         txtJob.text = getJob
 
-
-        val btnBack = findViewById<Button>(R.id.btnBack)
-
         btnBack.setOnClickListener {
+            //go back to the last screen
             finish()
         }
 

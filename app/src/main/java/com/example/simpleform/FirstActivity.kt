@@ -34,11 +34,14 @@ class FirstActivity : AppCompatActivity() {
                 intent.putExtra("job_key", job)
                 startActivity(intent)
             } else {
-                Toast.makeText(this, "Please enter the form correctly!!", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this, "Please enter the form correctly!!", Toast.LENGTH_SHORT).show()
+                //Show error message when user didn't input some of edit text field
+                when {
+                    txtUsername.text.toString().isEmpty() -> txtUsername.error = "Enter your username"
+                    txtAge.text.toString().isEmpty() -> txtAge.error = "Enter your age"
+                    txtJob.text.toString().isEmpty() -> txtJob.error = "Enter your job"
+                }
             }
-
         }
-
-
     }
 }
