@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">SimpleForm</string>
+
+<!--    <string-array name="spinner_items">-->
+<!--        <item>Male</item>-->
+<!--        <item>Female</item>-->
+<!--        <item>Other</item>-->
+<!--    </string-array>-->
 </resources>
