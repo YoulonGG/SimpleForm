@@ -26,20 +26,29 @@ class FirstActivity : AppCompatActivity() {
             val age = txtAge.text.toString()
             val job = txtJob.text.toString()
 
-            if (txtUsername.text.isNotEmpty() && txtAge.text.isNotEmpty() && txtJob.text.isNotEmpty() ) {
-                val intent = Intent(this, SecondActivity::class.java)
-                //Give value to Another Activity using putExtra() with key_word
-                intent.putExtra("username_key", userName)
-                intent.putExtra("age_key", age)
-                intent.putExtra("job_key", job)
-                startActivity(intent)
-            } else {
-//                Toast.makeText(this, "Please enter the form correctly!!", Toast.LENGTH_SHORT).show()
-                //Show error message when user didn't input some of edit text field
-                when {
-                    txtUsername.text.toString().isEmpty() -> txtUsername.error = "Enter your username"
-                    txtAge.text.toString().isEmpty() -> txtAge.error = "Enter your age"
-                    txtJob.text.toString().isEmpty() -> txtJob.error = "Enter your job"
+            when {
+                //Check if username input text is empty
+                txtUsername.text.toString().isEmpty() -> txtUsername.error = "Enter your username"
+
+                //let user input not less 4 and not more than 10
+                txtUsername.text.toString().length !in 4..10 -> { txtUsername.error = "Enter between 4 and 10 characters" }
+
+                //check if age input text is empty
+                txtAge.text.toString().isEmpty() -> txtAge.error = "Enter your age"
+
+                //Let user input age only between 18 and 99
+                txtAge.text.toString().toIntOrNull() !in 18..99-> txtAge.error = "Your age must between 18 and 99 years old"
+
+                //Check if job input text is empty
+                txtJob.text.toString().isEmpty() -> { txtJob.error = "Enter your job"}
+                else -> {
+                    val intent = Intent(this, SecondActivity::class.java)
+
+                    //Give value to Another Activity using putExtra() with key_word
+                    intent.putExtra("username_key", userName)
+                    intent.putExtra("age_key", age)
+                    intent.putExtra("job_key", job)
+                    startActivity(intent)
                 }
             }
         }
