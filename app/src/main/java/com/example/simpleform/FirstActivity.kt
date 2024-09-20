@@ -95,13 +95,25 @@ class FirstActivity : AppCompatActivity() {
                     val intent = Intent(this, SecondActivity::class.java)
 
                     //Give value to Another Activity using putExtra() with key_word
-                    intent.putExtra("username_key", userName)
-                    intent.putExtra("email_key", email)
-                    intent.putExtra("age_key", age)
-                    intent.putExtra("gender_key", selectedGender)
-                    intent.putExtra("dob_key", dateOfBirth)
-                    intent.putExtra("job_key", job)
-                    startActivity(intent)
+//                    intent.putExtra("username_key", userName)
+//                    intent.putExtra("email_key", email)
+//                    intent.putExtra("age_key", age)
+//                    intent.putExtra("gender_key", selectedGender)
+//                    intent.putExtra("dob_key", dateOfBirth)
+//                    intent.putExtra("job_key", job)
+//                    startActivity(intent)
+
+                    //Use apply from Scope Function instead
+                    intent.apply {
+                        putExtra("username_key", userName)
+                        putExtra("email_key", email)
+                        putExtra("age_key", age)
+                        putExtra("gender_key", selectedGender)
+                        putExtra("dob_key", dateOfBirth)
+                        putExtra("job_key", job)
+                        startActivity(intent)
+                    }
+
                 }
             }
         }
